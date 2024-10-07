@@ -42,7 +42,11 @@ export const config: Options.Testrunner = {
         'spec',
         [
             'allure',
-            { outputDir: 'allure-results' }
+            {
+                outputDir: rawOutputPath,
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: false
+            }
         ]
     ],
     mochaOpts: {

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "A basic automated test project to demonstrate WebdriverIO/Typescript/Node capabilities",
   "scripts": {
-    "e2e": "wdio run wdio.conf.ts"
+    "e2e": "wdio run wdio.conf.ts",
+    "report": "allure open -h localhost -p 9999"
   },
   "devDependencies": {
     "@wdio/allure-reporter": "^9.1.2",
