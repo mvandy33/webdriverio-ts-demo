@@ -6,10 +6,15 @@ import TextInput from "../controls/text-input";
 export default class Header extends PageObject {
 
     locator: string;
-    
+
     searchInput: TextInput;
     searchButton: ButtonInput;
 
+    /**
+     * The header that appears on every baseball reference page
+     * - Includes the search component
+     * @param locator 
+     */
     constructor(locator: string = undefined) {
         super();
         this.locator = locator ?? by.id('header');
