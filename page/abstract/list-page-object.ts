@@ -1,7 +1,7 @@
 import Matchable from "./matchable";
 import PageObject from "./page-object";
 
-export default class ListPageObject extends PageObject {
+export default abstract class ListPageObject extends PageObject {
     /**
      * Class to extend when the inheriting page object needs to operate on a list of elements
      * @param finder 

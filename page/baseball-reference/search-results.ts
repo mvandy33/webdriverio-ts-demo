@@ -1,13 +1,16 @@
 import Player from "../../model/player";
-import { by } from "../../util/by";
+import { by, combine } from "../../util/by";
+import ListPageObject from "../abstract/list-page-object";
 import Matchable from "../abstract/matchable";
 import PageObject from "../abstract/page-object";
 import Label from "../controls/label";
 import Link from "../controls/link";
 
-export default class SearchResults extends PageObject {
+export default class SearchResults extends ListPageObject {
 
     locator: string;
+
+    searchItem: string;
 
     /**
      * The baseball reference search results page
@@ -15,14 +18,28 @@ export default class SearchResults extends PageObject {
     constructor() {
         super();
         this.locator = by.css('[class*="search-results"]');
+
+        this.searchItem = combine(this.locator, by.css('[class="search-item"]'));
     }
 
     async isDisplayed() {
         return await this.elementIsDisplayed(this.locator);
     }
+
+    async getResults() {
+        return await this.getPageObjectList(SearchItem, this.searchItem);
+    }
+
+    async getResult(info: Player) {
+        return await this.getPageObjectMatch(SearchItem, this.searchItem, info);
+    }
+
+    async isResultListed(info: Player) {
+        return (await this.getResult(info)) != undefined;
+    }
 }
 
-class Result extends PageObject implements Matchable {
+class SearchItem extends PageObject implements Matchable {
 
     nameLink: Link;
     hofBadge: Label;
