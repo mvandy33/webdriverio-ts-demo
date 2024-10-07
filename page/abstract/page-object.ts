@@ -2,22 +2,22 @@ import { clear } from "../../util/helpers";
 
 export default abstract class PageObject {
 
-    context: WebdriverIO.Browser | WebdriverIO.Element;
+    finder: WebdriverIO.Browser | WebdriverIO.Element;
 
     /**
      * Class from which all concrete page objects should inherit
-     * @param context 
+     * @param finder 
      */
-    constructor(context: WebdriverIO.Browser | WebdriverIO.Element = browser) {
-        this.context = context;
+    constructor(finder: WebdriverIO.Browser | WebdriverIO.Element = browser) {
+        this.finder = finder;
     }
 
     async getElement(locator: string): Promise<WebdriverIO.Element> {
-        return await this.context.$(locator);
+        return await this.finder.$(locator);
     }
 
     async getElementList(locator: string): Promise<WebdriverIO.ElementArray> {
-        return await this.context.$$(locator);
+        return await this.finder.$$(locator);
     }
 
     async elementExists(locator: string) {
