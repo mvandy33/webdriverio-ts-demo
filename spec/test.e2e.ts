@@ -1,6 +1,8 @@
+import { navigate } from "../util/helpers";
+
 describe('Initial demo spec', () => {
     before(async () => {
-        await browser.url('/');
+        await navigate();
     });
 
     it('should navigate to baseball reference', async () => {
