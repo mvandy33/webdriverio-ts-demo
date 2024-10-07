@@ -19,7 +19,7 @@ export default class Header extends PageObject {
         super();
         this.locator = locator ?? by.id('header');
 
-        this.searchInput = new TextInput(combine(this.locator, by.css('input[type="search"]')));
+        this.searchInput = new TextInput(combine(this.locator, by.css('input[name="search"]')));
         this.searchButton = new ButtonInput(combine(this.locator, by.css('input[type="submit"]')));
     }
 
