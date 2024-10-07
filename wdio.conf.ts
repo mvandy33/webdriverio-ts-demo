@@ -8,7 +8,7 @@ export const config: Options.Testrunner = {
         }
     },
     specs: [
-
+        '**/*.e2e.ts'
     ],
     exclude: [
 

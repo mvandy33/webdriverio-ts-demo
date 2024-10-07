@@ -1,4 +1,10 @@
 {
+  "name": "webdriverio-ts-demo",
+  "version": "1.0.0",
+  "description": "A basic automated test project to demonstrate WebdriverIO/Typescript/Node capabilities",
+  "scripts": {
+    "e2e": "wdio run wdio.conf.ts"
+  },
   "devDependencies": {
     "@wdio/allure-reporter": "^9.1.2",
     "@wdio/cli": "^8.40.6",
