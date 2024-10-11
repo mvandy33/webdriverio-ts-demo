@@ -45,7 +45,7 @@ describe('Baseball reference search functionality', () => {
                 .toBe('');
         });
 
-        it('should view the player profile and display the correct player info', async function() {
+        it('should view the player profile and display the correct player info', async () => {
             await (await new SearchResults().getResult(rickey)).view();
             let profileInfo = await new PlayerProfile().getInfo();
             expect(compare(profileInfo, rickey.info))
@@ -65,7 +65,7 @@ describe('Baseball reference search functionality', () => {
                 .toBe(true);
         });
 
-        it('should view the player profile and display the correct player info', async function() {
+        it('should view the player profile and display the correct player info', async () => {
             await (await new SearchResults().getResult(brooks)).view();
             let profileInfo = await new PlayerProfile().getInfo();
             expect(compare(profileInfo, brooks.info))
@@ -80,7 +80,7 @@ describe('Baseball reference search functionality', () => {
                 .toBe(true);
         });
 
-        it('should display the correct player info', async function() {
+        it('should display the correct player info', async () => {
             let profileInfo = await new PlayerProfile().getInfo();
             expect(compare(profileInfo, bigUnit.info))
                 .toBe('');
