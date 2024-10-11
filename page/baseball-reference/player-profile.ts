@@ -46,7 +46,7 @@ export default class PlayerProfile extends PageObject {
 
     async getNickname() {
         if (await this.nicknamesLink.isDisplayed()) {
-            return (await this.nicknamesLink.getText()).split(' or ')[0].trim();
+            return (await this.nicknamesLink.getText()).split(/, | or /)[0].trim();
         }
     }
 

@@ -73,7 +73,7 @@ class SearchItem extends PageObject implements Matchable {
     async getNickname() {
         let nicknameString = await this.nicknameLabel.getText();
         if(nicknameString.includes('nickname')) {
-            return nicknameString.split(': ').pop().split(',')[0].trim();
+            return nicknameString.split(': ').pop().split(/, | or /)[0].trim();
         }
     }
 
