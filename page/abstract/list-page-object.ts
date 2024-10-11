@@ -30,6 +30,10 @@ export default abstract class ListPageObject extends PageObject {
      */
     async getPageObjectMatch<T extends Matchable>(Type: new (finder: WebdriverIO.Element) => T, locator: string, info: object) {
         let list = await this.getPageObjectList(Type, locator);
-        return list.find(el => el.isMatch(info));
+        for (let matchable of list) {
+            if (await matchable.isMatch(info)) {
+                return matchable;
+            }
+        }
     }
 }
