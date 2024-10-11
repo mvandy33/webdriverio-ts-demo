@@ -1,11 +1,11 @@
 import PageObject from "../abstract/page-object";
 
-export default class TextInput extends PageObject {
+export default class Button extends PageObject {
 
     locator: string;
 
     /**
-     * Used to interact with text inputs
+     * Used to interact with button elements
      * @param locator 
      * @param parent 
      */
@@ -18,11 +18,11 @@ export default class TextInput extends PageObject {
         return await this.elementIsDisplayed(this.locator);
     }
 
-    async setText(text: string) {
-        await this.setElementText(this.locator, text);
+    async getText() {
+        return await this.getElementText(this.locator);
     }
 
-    async getCurrentText() {
-        return await this.getElementAttribute(this.locator, 'value');
+    async click() {
+        await this.clickElement(this.locator);
     }
 }

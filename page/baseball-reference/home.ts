@@ -8,6 +8,9 @@ export default class Home extends PageObject {
 
     header: Header;
 
+    /**
+     * The baseball reference home page
+     */
     constructor() {
         super();
         this.locator = by.css('[class*="br front_page"]');

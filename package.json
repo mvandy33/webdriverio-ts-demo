@@ -13,8 +13,10 @@
     "@wdio/mocha-framework": "^9.1.2",
     "@wdio/spec-reporter": "^9.1.2",
     "allure-commandline": "^2.30.0",
+    "chromedriver": "^129.0.4",
     "css-to-xpath": "^0.1.0",
     "fs-extra": "^11.2.0",
+    "lodash": "^4.17.21",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.2"
   }
