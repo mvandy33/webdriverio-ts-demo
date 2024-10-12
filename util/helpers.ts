@@ -4,7 +4,7 @@ import * as _ from 'lodash';
  * Navigate to the app start page
  */
 export async function navigate() {
-    await browser.url(process.env.ENVIRONMENT === 'test' ? '/app/' : '/');
+    await browser.url('/');
     await removeAds();
 }
 
