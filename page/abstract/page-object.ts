@@ -12,14 +12,14 @@ export default abstract class PageObject {
         this.finder = finder;
     }
 
-    async getElement(locator: string): Promise<WebdriverIO.Element> {
+    async getElement(locator: string) {
         await removeAds();
-        return await this.finder.$(locator);
+        return await this.finder.$(locator).getElement();
     }
 
-    async getElementList(locator: string): Promise<WebdriverIO.ElementArray> {
+    async getElementList(locator: string) {
         await removeAds();
-        return await this.finder.$$(locator);
+        return await this.finder.$$(locator).getElements();
     }
 
     async elementExists(locator: string) {
