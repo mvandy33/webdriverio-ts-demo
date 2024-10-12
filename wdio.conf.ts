@@ -1,11 +1,10 @@
-import type { Options } from '@wdio/types'
-import * as allure from 'allure-commandline';
+import * as allureCmd from 'allure-commandline';
 import * as fs from 'fs-extra';
 
 const rawOutputPath = `./allure-results/${process.env.REPORT ?? 'debug'}`;
 const generatedOutputPath = `./allure-report/${process.env.REPORT ?? 'debug'}`;
 
-export const config: Options.Testrunner = {
+export const config = {
     autoCompileOpts: {
         autoCompile: true,
         tsNodeOpts: {
@@ -30,7 +29,11 @@ export const config: Options.Testrunner = {
                 '--disable-gpu',
                 '--no-sandbox',
                 '--log-level=3'
-            ] : []
+            ] : [
+                '--disable-gpu',
+                '--no-sandbox',
+                '--log-level=3'
+            ]
         }
     }],
     logLevel: 'error',
@@ -78,7 +81,7 @@ function reportInit() {
 }
 
 function generateAllure() {
-    const generation = allure(['generate', rawOutputPath, '-o', generatedOutputPath, '-c']);
+    const generation = allureCmd.default(['generate', rawOutputPath, '-o', generatedOutputPath, '-c']);
     return new Promise((resolve, reject) => {
         generation.on('exit', (exitCode: number) => {
             console.log(`Report generation complete with code ${exitCode}`);
