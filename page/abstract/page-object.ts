@@ -1,4 +1,4 @@
-import { clear } from "../../util/helpers";
+import { clear, removeAds } from "../../util/helpers";
 
 export default abstract class PageObject {
 
@@ -13,10 +13,12 @@ export default abstract class PageObject {
     }
 
     async getElement(locator: string): Promise<WebdriverIO.Element> {
+        await removeAds();
         return await this.finder.$(locator);
     }
 
     async getElementList(locator: string): Promise<WebdriverIO.ElementArray> {
+        await removeAds();
         return await this.finder.$$(locator);
     }
 

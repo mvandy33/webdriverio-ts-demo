@@ -23,6 +23,7 @@ export const config: Options.Testrunner = {
     capabilities: [{
         browserName: 'chrome',
         acceptInsecureCerts: true,
+        pageLoadStrategy: 'eager',
         "goog:chromeOptions": {
             args: process.env.HEADLESS === 'true' ? [
                 '--headless',
