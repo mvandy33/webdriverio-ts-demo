@@ -8,12 +8,19 @@ export async function navigate() {
     await removeAds();
 }
 
+/**
+ * Remove ads on the page
+ * - baseball-reference.com does not allow setTimeout or setInterval, so this
+ *   must be called on each page load or before each webdriver interaction
+ */
 export async function removeAds() {
-    await browser.execute(`
-        ads = Array.from(document.querySelectorAll('[class*="adblock"]'));
-        ads = ads.concat(Array.from(document.querySelectorAll('[id*="google_ads"]')));
-        for (let ad of ads){
-            ad.remove();
+    await browser.executeScript(`
+        selectors = ['[class*="adblock"]', '[id*="google_ads"]', [id="modal-container"], [id="modal-overlay"]];
+        for (let selector of selectors) {
+            ads = document.querySelectorAll('[class*="adblock"]');
+            for (let ad of ads){
+                ad.remove();
+            }
         }
     `, []);
 }
