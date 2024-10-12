@@ -42,6 +42,11 @@ export const config = {
     framework: 'mocha',
     specFileRetries: parseInt(process.env.RETRIES) ?? 0,
     specFileRetriesDeferred: true,
+    services: [
+        ['chromedriver', {
+            args: ['--silent']
+        }]
+    ],
     reporters: [
         'spec',
         [
