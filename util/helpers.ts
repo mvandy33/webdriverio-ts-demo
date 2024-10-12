@@ -17,7 +17,7 @@ export async function removeAds() {
     await browser.executeScript(`
         selectors = ['[class*="adblock"]', '[id*="google_ads"]', [id="modal-container"], [id="modal-overlay"]];
         for (let selector of selectors) {
-            ads = document.querySelectorAll('[class*="adblock"]');
+            ads = document.querySelectorAll(selector);
             for (let ad of ads){
                 ad.remove();
             }
