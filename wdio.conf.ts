@@ -30,8 +30,6 @@ export const config = {
                 '--no-sandbox',
                 '--log-level=3'
             ] : [
-                '--disable-gpu',
-                '--no-sandbox',
                 '--log-level=3'
             ]
         }
@@ -42,6 +40,8 @@ export const config = {
     connectionRetryTimeout: 60000,
     connectionRetryCount: 3,
     framework: 'mocha',
+    specFileRetries: parseInt(process.env.RETRIES) ?? 0,
+    specFileRetriesDeferred: true,
     reporters: [
         'spec',
         [
@@ -55,7 +55,7 @@ export const config = {
     ],
     mochaOpts: {
         bail: process.env.headless === 'true' ? true : false,
-        timeout: '120000'
+        timeout: '20000'
     },
     onPrepare: () => {
         reportInit();

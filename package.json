@@ -4,6 +4,8 @@
   "description": "A basic automated test project to demonstrate WebdriverIO/Typescript/Node capabilities",
   "scripts": {
     "e2e": "wdio run wdio.conf.ts",
+    "start": "cross-env REPORT=test RETRIES=1 npm run e2e",
+    "start:headless": "cross-env REPORT=test HEADLESS=true RETRIES=1 npm run e2e",
     "report": "allure open -h localhost -p 9999"
   },
   "devDependencies": {
@@ -14,6 +16,7 @@
     "@wdio/spec-reporter": "^9.1.2",
     "allure-commandline": "^2.30.0",
     "chromedriver": "^129.0.4",
+    "cross-env": "^7.0.3",
     "css-to-xpath": "^0.1.0",
     "fs-extra": "^11.2.0",
     "lodash": "^4.17.21",
