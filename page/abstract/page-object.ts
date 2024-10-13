@@ -36,14 +36,14 @@ export default abstract class PageObject {
 
     async clickElement(locator: string) {
         let element = await this.getElement(locator);
-        await element.scrollIntoView({block: 'nearest', inline: 'nearest'});
+        await this.scrollElementIntoView(element);
         await element.click();
     }
 
     async setElementText(locator: string, text: string) {
         if (text != undefined) {
             let input = await this.getElement(locator);
-            await input.scrollIntoView({block: 'nearest', inline: 'nearest'});
+            await this.scrollElementIntoView(input);
             await clear(input);
             await input.addValue(text);
         }
@@ -51,12 +51,19 @@ export default abstract class PageObject {
 
     async getElementText(locator: string) {
         let element = await this.getElement(locator);
-        await element.scrollIntoView({block: 'nearest', inline: 'nearest'});
+        await this.scrollElementIntoView(element);
         return await element.getText();
     }
 
     async getElementAttribute(locator: string, attribute: string) {
         let element = await this.getElement(locator);
+        await this.scrollElementIntoView(element);
         return await element.getAttribute(attribute);
+    }
+
+    async scrollElementIntoView(element: WebdriverIO.Element) {
+        await removeAds();
+        await element.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+        await removeAds();
     }
 }

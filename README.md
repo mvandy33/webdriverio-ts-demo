@@ -3,11 +3,15 @@ A basic automated test project to demonstrate WebdriverIO/Typescript/Node capabi
 
 This project executes a simple end-to-end test scenario against the website baseball-reference.com, validating some aspects of search functionality and data presentation. The purpose is to demonstrate an elegant, scalable implementation of the Page Object design pattern for use in automated testing.
 
+#### Current Notes:
+- With Chrome version 129 there is some flakiness due to tensorflow errors that occasionally cause list operations to hang. Automatic test retries should handle this and provide an accurate result.
+
 ### Run Instructions
-1. Download Node.js: https://nodejs.org/
-2. Clone or fork the repository
-3. In a terminal, navigate to the project directory, and run the command `npm install`
-4. To run the tests, execute one of the following:
+1. Ensure the latest version of Chrome is installed on your machine
+2. Download Node.js: https://nodejs.org/
+3. Clone or fork the repository
+4. In a terminal, navigate to the project directory, and run the command `npm install`
+5. To run the tests, execute one of the following:
     - `npm run start` - this will execute the tests sequentially in a visual browser instance
     - `npm run start:headless` - this will execute tests in parallel in headless (non-visual) browser instances
         - _Note that a bug in chrome version 129 will display a blank browser window while running headless mode_
