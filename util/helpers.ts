@@ -15,7 +15,7 @@ export async function navigate() {
  */
 export async function removeAds() {
     await browser.executeScript(`
-        selectors = ['[class*="adblock"]', '[id*="google_ads"]', [id="modal-container"], [id="modal-overlay"]];
+        selectors = ['[class*="adblock"]', '[id*="google_ads"]', '[id="modal-container"]', '[id="modal-overlay"]'];
         for (let selector of selectors) {
             ads = document.querySelectorAll(selector);
             for (let ad of ads){

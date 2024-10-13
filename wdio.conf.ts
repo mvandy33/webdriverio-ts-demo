@@ -28,7 +28,9 @@ export const config = {
                 '--headless',
                 '--disable-gpu',
                 '--no-sandbox',
-                '--log-level=3'
+                '--log-level=3',
+                '--ignore-certificate-errors',
+                '--ignore-ssl-errors'
             ] : [
                 '--log-level=3'
             ]
